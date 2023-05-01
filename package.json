@@ -1,0 +1,28 @@
+{
+    "name": "@h4v0c/ecs",
+    "version": "1.0.0",
+    "description": "A simple (WIP) Entity-Component-System",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "prepublishOnly": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h4v0c-npm/ecs.git"
+    },
+    "keywords": [],
+    "author": "John Wakley <john.wakley@icloud.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/h4v0c-npm/ecs/issues"
+    },
+    "homepage": "https://github.com/h4v0c-npm/ecs#readme",
+    "dependencies": {
+        "@h4v0c/uid": "^1.0.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.0.4"
+    }
+}

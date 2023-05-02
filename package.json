@@ -1,7 +1,7 @@
 {
     "name": "@h4v0c/ecs",
-    "version": "1.0.0",
-    "description": "A simple (WIP) Entity-Component-System",
+    "version": "1.0.1",
+    "description": "A simple Entity-Component-System",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {

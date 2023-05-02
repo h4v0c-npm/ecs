@@ -5,7 +5,7 @@ export type Entity = { id: string, components: any };
 export type ComponentDataFunc = () => any;
 export type Component = { name: string, dataFunc: ComponentDataFunc };
 
-export type SystemFunc = (entity: Entity, time: number) => void;
+export type SystemFunc = (entity: Entity, time: number, ...args: any[]) => void;
 export type System = { name: string, components: Array<string>, func: SystemFunc };
 
 export class ECS {
@@ -55,10 +55,10 @@ export class ECS {
         });
     }
 
-    executeSystems(time: number) {
+    executeSystems(time: number, ...args: any[]) {
         this.systems.forEach((system: System) =>
             this.getEntitiesWithComponents(system.components)
-                .forEach((entity: Entity) => system.func(entity, time))
+                .forEach((entity: Entity) => system.func(entity, time, ...args))
         );
     }
 }

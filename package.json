@@ -22,7 +22,8 @@
     },
     "homepage": "https://github.com/h4v0c-npm/ecs#readme",
     "dependencies": {
-        "@h4v0c/uid": "^1.0.0"
+        "@h4v0c/event-emitter": "^1.0.1",
+        "@h4v0c/uid": "^1.1.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.22",

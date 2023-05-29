@@ -10,6 +10,12 @@ class _Entity extends EventEmitter {
 
     components: Component[] = [];
 
+    getComponent(nameOrType: string) {
+        return this.components.find((component: Component) =>
+            (component.name === nameOrType || component.type === nameOrType)
+        );
+    }
+
     addComponent(component: Component, priority: ComponentUpdatePriority = ComponentUpdatePriority.ANY): number {
         let index: number = -1;
 

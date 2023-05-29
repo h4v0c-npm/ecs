@@ -7,8 +7,8 @@ const log = console.log;
     log('testing ecs...');
 
     class Component1 extends Component {
-        update(time?: number, deltaTime?: number, ...args: any[]) {
-            log('Component:', this.name, { time, deltaTime, args });
+        update() {
+            log('Component:', this.name);
         }
     }
 

@@ -17,5 +17,5 @@ export abstract class Component extends EventEmitter {
 
     priority: ComponentUpdatePriority = ComponentUpdatePriority.ANY;
 
-    abstract update(time?: number, deltaTime?: number, ...args: any[]);
+    abstract update(...args: any[]);
 }

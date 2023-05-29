@@ -84,9 +84,9 @@ class _Entity extends EventEmitter {
         } else console.warn('*** Entity.removeComponent: component not found');
     }
 
-    update(time: number, deltaTime: number, ...args: any[]) {
+    update(...args: any[]) {
         for (const component of this.components) {
-            component.update(time, deltaTime, ...args);
+            component.update(...args);
         }
     }
 }
@@ -111,8 +111,8 @@ export function GetEntityByNameOrId(nameOrId: string | UID) {
     return _entities.find((entity: Entity) => (entity.name === nameOrId || entity.id === nameOrId));
 }
 
-export function UpdateEntities(time: number, deltaTime: number, ...args: any[]) {
+export function UpdateEntities(...args: any[]) {
     for (const entity of _entities) {
-        entity.update(time, deltaTime, ...args);
+        entity.update(...args);
     }
 }

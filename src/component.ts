@@ -1,5 +1,6 @@
 import { EventEmitter } from '@h4v0c/event-emitter';
 import { uid } from '@h4v0c/uid';
+import { Entity } from './entity';
 
 export enum ComponentUpdatePriority {
     FIRST,
@@ -17,5 +18,5 @@ export abstract class Component extends EventEmitter {
 
     priority: ComponentUpdatePriority = ComponentUpdatePriority.ANY;
 
-    abstract update(...args: any[]);
+    abstract update(entity: Entity, ...args: any[]);
 }

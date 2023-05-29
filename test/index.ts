@@ -7,14 +7,14 @@ const log = console.log;
     log('testing ecs...');
 
     class Component1 extends Component {
-        update() {
-            log('Component:', this.name);
+        update(enity: Entity) {
+            log('Component:', enity);
         }
     }
 
     class Component2 extends Component {
-        update(time?: number, deltaTime?: number, ...args: any[]) {
-            log('Component:', this.name, { time, deltaTime, args });
+        update(entity: Entity, time?: number, deltaTime?: number, ...args: any[]) {
+            log('Component:', { entity, time, deltaTime, args });
         }
     }
 

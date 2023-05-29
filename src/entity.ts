@@ -92,7 +92,7 @@ class _Entity extends EventEmitter {
 
     update(...args: any[]) {
         for (const component of this.components) {
-            component.update(...args);
+            component.update(this, ...args);
         }
     }
 }

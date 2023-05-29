@@ -21,12 +21,10 @@ const log = console.log;
     }
 
     class Component2 extends Component {
-        arg2: string = '';
+        protected _arg2: string = '';
 
-        constructor(arg2?: string) {
-            super();
-
-            this.arg2 = arg2 ?? this.arg2;
+        set arg2(v: string) {
+            this._arg2 = v;
         }
 
         update(entity: Entity, time?: number, deltaTime?: number, ...args: any[]) {

@@ -31,7 +31,7 @@ class _Entity extends EventEmitter {
 
         if (args) {
             for (const argName in args) {
-                if (component.hasOwnProperty(argName)) {
+                if (argName in component) {
                     component[argName] = args[argName];
                 }
             }

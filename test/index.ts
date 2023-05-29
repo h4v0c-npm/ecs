@@ -1,20 +1,38 @@
-import { ECS, Entity } from '../src';
+import { Component, ComponentUpdatePriority } from '../src/component';
+import { CreateEntity, Entity, GetEntityByNameOrId, UpdateEntities } from '../src/entity';
 
 const log = console.log;
 
 (() => {
-    log('testing ECS...');
-    
-    const ecs = new ECS();
+    log('testing ecs...');
 
-    const s1 = ecs.createSystem('s1', ['c1'], (entity: Entity, time: number, other: number) => {
-        log('system: s1: entity:', entity.id, 'time:', time, 'other:', other);
-    });
+    class Component1 extends Component {
+        update(time?: number, deltaTime?: number, ...args: any[]) {
+            log('Component:', this.name, { time, deltaTime, args });
+        }
+    }
 
-    const c1 = ecs.createComponent('c1', () => ({ value: 'c1' }));
+    class Component2 extends Component {
+        update(time?: number, deltaTime?: number, ...args: any[]) {
+            log('Component:', this.name, { time, deltaTime, args });
+        }
+    }
 
-    const e1 = ecs.createEntity();
-    ecs.addComponent(e1, c1);
+    const entity1: Entity = CreateEntity();
+    entity1.name = 'Entity_1';
+    entity1.addComponent(new Component1());
+    entity1.addComponent(new Component2, ComponentUpdatePriority.FIRST);
 
-    ecs.executeSystems(12, 42);
+    const entity2: Entity = CreateEntity();
+    entity2.name = 'Entity_2';
+    entity2.addComponent(new Component2());
+    entity2.addComponent(new Component1, ComponentUpdatePriority.FIRST);
+
+    log('findByName entity1:', GetEntityByNameOrId('Entity_1'));
+    log('findById entity1:', GetEntityByNameOrId(entity1.id));
+
+    log('findByName entity2:', GetEntityByNameOrId('Entity_2'));
+    log('findById entity2:', GetEntityByNameOrId(entity2.id));
+
+    UpdateEntities(11, 12, 'arg1', 'arg2');
 })();

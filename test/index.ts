@@ -20,13 +20,15 @@ const log = console.log;
 
     const entity1: Entity = CreateEntity();
     entity1.name = 'Entity_1';
-    entity1.addComponent(new Component1());
-    entity1.addComponent(new Component2, ComponentUpdatePriority.FIRST);
+    entity1.addComponent(Component1);
+    entity1.addComponent(Component2, ComponentUpdatePriority.FIRST);
+
+    console.debug('\nentity1.getComponent(Component2):', entity1.getComponent(Component2));
 
     const entity2: Entity = CreateEntity();
     entity2.name = 'Entity_2';
-    entity2.addComponent(new Component2());
-    entity2.addComponent(new Component1, ComponentUpdatePriority.FIRST);
+    entity2.addComponent(Component2);
+    entity2.addComponent(Component1, ComponentUpdatePriority.FIRST);
 
     log('findByName entity1:', GetEntityByNameOrId('Entity_1'));
     log('findById entity1:', GetEntityByNameOrId(entity1.id));

@@ -10,7 +10,7 @@ class _Entity extends EventEmitter {
 
     components: Component[] = [];
 
-    getComponent<T>(componentType: new (...a: any) => T): T {
+    getComponent<T>(componentType: new () => T): T {
         for (const component of this.components) {
             if (component instanceof componentType) {
                 return component;
@@ -22,11 +22,20 @@ class _Entity extends EventEmitter {
 
     addComponent<T extends Component>(
         derivedComponentClass: new () => T,
-        priority: ComponentUpdatePriority = ComponentUpdatePriority.ANY
+        priority: ComponentUpdatePriority = ComponentUpdatePriority.ANY,
+        args?: any,
     ): number {
         let index: number = -1;
 
         const component: T = new derivedComponentClass();
+
+        if (args) {
+            for (const argName in args) {
+                if (component.hasOwnProperty(argName)) {
+                    component[argName] = args[argName];
+                }
+            }
+        }
 
         switch (priority) {
             case ComponentUpdatePriority.FIRST: {

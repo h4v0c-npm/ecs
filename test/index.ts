@@ -7,12 +7,28 @@ const log = console.log;
     log('testing ecs...');
 
     class Component1 extends Component {
+        arg1: string = '';
+
+        constructor(arg1?: string) {
+            super();
+
+            this.arg1 = arg1 ?? this.arg1;
+        }
+
         update(enity: Entity) {
             log('Component:', enity);
         }
     }
 
     class Component2 extends Component {
+        arg2: string = '';
+
+        constructor(arg2?: string) {
+            super();
+
+            this.arg2 = arg2 ?? this.arg2;
+        }
+
         update(entity: Entity, time?: number, deltaTime?: number, ...args: any[]) {
             log('Component:', { entity, time, deltaTime, args });
         }
@@ -20,9 +36,10 @@ const log = console.log;
 
     const entity1: Entity = CreateEntity();
     entity1.name = 'Entity_1';
-    entity1.addComponent(Component1);
-    entity1.addComponent(Component2, ComponentUpdatePriority.FIRST);
+    entity1.addComponent(Component1, ComponentUpdatePriority.ANY, { arg1: 'this is arg1' });
+    entity1.addComponent(Component2, ComponentUpdatePriority.FIRST, { arg2: 'this is arg2' });
 
+    console.debug('\nentity1.getComponent(Component1):', entity1.getComponent(Component1));
     console.debug('\nentity1.getComponent(Component2):', entity1.getComponent(Component2));
 
     const entity2: Entity = CreateEntity();

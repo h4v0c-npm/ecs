@@ -14,7 +14,13 @@
         "type": "git",
         "url": "git+https://github.com/h4v0c-npm/ecs.git"
     },
-    "keywords": [],
+    "keywords": [
+        "ecs",
+        "entity-component-system",
+        "entity",
+        "component",
+        "system"
+    ],
     "author": "John Wakley <john.wakley@icloud.com>",
     "license": "MIT",
     "bugs": {

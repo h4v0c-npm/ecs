@@ -6,7 +6,7 @@ import { EventEmitter } from '@h4v0c/event-emitter';
 class _Entity extends EventEmitter {
     readonly id: UID = uid();
 
-    name: string = this.constructor.name;
+    name: string = 'Entity';
 
     components: Component[] = [];
 
